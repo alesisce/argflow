@@ -74,10 +74,10 @@ class argflow:
             "callback": argument_callback
         }
 
-    def parse(self, on_default=None):
+    def parse(self, on_default=None, ignore_args: bool = False):
         already_parsed = [] # this will save arguments that cannot be parsed again.
 
-        if callable(on_default) and not self.argv: # Calling on_default if avaliable when no arguments are supplied.
+        if callable(on_default) and not ignore_args and not self.argv: # Calling on_default if no arguments are supplied and no ignore_args..
             on_default()
             return
 
@@ -93,3 +93,7 @@ class argflow:
                     self._execute_argument(arg)
                 else:
                     raise exceptions.MultipleNotAllowed(f"Can't execute '{arg}' multiple times because allow_multiple is disabled.")
+                
+        if callable(on_default) and ignore_args: # Calling on_default if ignore_args is supplied..
+            on_default()
+            return
