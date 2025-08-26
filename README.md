@@ -56,5 +56,3 @@ python script.py --hello Alice
 ## License
 
 MIT License – free to use, modify, and distribute.
-
-¿Quieres que haga eso?
