@@ -41,7 +41,7 @@ af = argflow()
 def hello(name):
     print(f"Hello, {name}!")
 
-af.new_argument("--hello", hello)
+af.new_argument("hello", hello)
 af.parse()
 ```
 
