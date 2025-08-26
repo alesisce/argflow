@@ -21,14 +21,8 @@ class argflow:
         arg_callback = self.arguments[argument_name]["callback"]
 
         try: args_for_callback = self.argv[function_arg_index:] # The arguments of the callback
-        except IndexError: args_for_callback = None
+        except IndexError: args_for_callback = [] # defaults to empty list.
 
-        if arg_count > 0 and not args_for_callback:
-            raise exceptions.MissingPositionalArgument(f"You're missing possitional arguments ({", ".join(arg_positional)}) for {argument_name}.")
-        elif arg_count == 0:
-            arg_callback() # Just calling the function and executing the argument.
-            return # Exiting from _execute_argument...
-        
         parsed = {}
         for index in range(arg_count):
             try: value = args_for_callback[index] # Arg found
