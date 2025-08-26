@@ -6,7 +6,7 @@ setup(
     packages=find_packages(),      
     install_requires=[],           
     python_requires=">=3.12",       
-    url="https://github.com/tu_usuario/argflow",
+    url="https://github.com/alesisce/argflow",
     author="alesisce",
     description='The easier and "faster" alternative to argparse.',
     long_description=open("README.md").read(),
