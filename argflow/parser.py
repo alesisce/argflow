@@ -6,7 +6,7 @@ class argflow:
     def __init__(self, argv: dict = None) -> None:
         self.arguments = {}
         self.argv = sys.argv[1:] if not argv else argv # Uses argv from the argv argument if avaliable.
-        print(self.argv)
+        #print(self.argv)
 
     def _execute_argument(self, argument_name: str) -> None:
         if not argument_name in self.arguments:
