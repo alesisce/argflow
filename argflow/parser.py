@@ -79,7 +79,7 @@ class argflow:
     def parse(self, on_default=None):
         already_parsed = [] # this will save arguments that cannot be parsed again.
 
-        if callable(on_default) and not self.argv:
+        if callable(on_default) and not self.argv: # Calling on_default if avaliable when no arguments are supplied.
             on_default()
             return
 
@@ -88,10 +88,8 @@ class argflow:
                 if not arg in self.arguments:
                     raise exceptions.NoArgumentFound(f"No argument '{arg}'.") # Raising if not existing.
 
-                if not arg in already_parsed:
-                    # Adding if multiple is not allowed.
-                    if not self.arguments[arg]["multiple"]:
-                        already_parsed.append(arg)
+                if not arg in already_parsed and not self.arguments[arg]["multiple"]:
+                    already_parsed.append(arg) # Adding to already_parsed
 
                     # Executing
                     self._execute_argument(arg)
