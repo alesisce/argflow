@@ -48,9 +48,13 @@ class argflow:
         """
         Adding a new argument to the argflow parser.
         """
+        if argument_name.startswith("-") or " " in argument_name:
+            raise exceptions.InvalidArgumentName(f"Invalid argument name for: {argument_name}")
 
         if argument_name in self.arguments:
             raise exceptions.CantOverrideArgument(f"You can't override an argument ({argument_name}) if it was already specified.")
+
+        argument_name = "--"+argument_name
 
         signature = inspect.signature(argument_callback)
         
