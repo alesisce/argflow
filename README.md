@@ -6,11 +6,11 @@ It is designed as a **simpler alternative to `argparse`**, ideal for small to me
 
 ## Features
 
-* Minimal and easy-to-use API
-* Positional and optional arguments (`key=value`)
-* Multiple commands support (`allow_multiple=True`)
-* Modular callbacks for each argument
-* Extremely fast parsing (\~200 lines of code)
+* Minimal and easy-to-use API.
+* Modular callbacks for each argument-
+* Extremely fast parsing (\~70 lines of code).
+* Built-in helper.
+* Super flexible.
 
 ## Argflow vs Argparse
 
@@ -36,19 +36,19 @@ Benchmark for a single argument:
 ```python
 from argflow import argflow
 
-af = argflow()
+ag = argflow()
 
+@ag.new_argument(flag="--hello", helper="Just, welcoming...", example="--hello=Jack") # Adding new argument
 def hello(name):
-    print(f"Hello, {name}!")
+    print("Hello, " name + "!")
 
-af.new_argument("hello", hello)
-af.parse()
+ag.parse() # Parsing
 ```
 
 Command line:
 
 ```bash
-python script.py --hello Alice
+python script.py --hello=Alice
 # Output: Hello, Alice!
 ```
 
